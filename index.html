@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIAP - Bem-vindos Alunos MINFIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a0a1f 0%, #0a0a0a 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #ff006e;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,0,110,0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,110,0.3) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ff006e 0%, #ff4d94 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #b0b0b0;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #ff006e;
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff006e, #ff4d94, #ff006e);
+            margin: 25px auto 0;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(255,0,110,0.5);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,0,110,0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #ff006e;
+            box-shadow: 0 20px 60px rgba(255,0,110,0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255,0,110,0.5));
+        }
+
+        .card h3 {
+            color: #ff006e;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #1a0a1f 0%, #0a0a0a 100%);
+            color: white;
+            padding: 80px 20px;
+            margin: 80px 0;
+            border-top: 2px solid #ff006e;
+            border-bottom: 2px solid #ff006e;
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,0,110,0.1) 0%, transparent 50%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            animation: countUp 2s ease-out;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ff006e 0%, #ff4d94 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-section {
+            background: #0a0a0a;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,0,110,0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff006e 0%, #ff4d94 100%);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(255,0,110,0.4);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255,0,110,0.6);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-icon {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff006e 0%, #ff4d94 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 25px;
+            box-shadow: 0 5px 20px rgba(255,0,110,0.4);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: #ff006e;
+            box-shadow: 0 10px 30px rgba(255,0,110,0.2);
+        }
+
+        .timeline-content h4 {
+            color: #ff006e;
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .timeline-content p {
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #000000;
+            color: #808080;
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 2px solid #ff006e;
+        }
+
+        footer a {
+            color: #ff006e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff4d94;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>BEM-VINDOS À FIAP</h1>
+            <p>Alunos MINFIN - O Novo é Aqui!</p>
+            <p style="font-size: 1.1rem; opacity: 0.85; font-weight: 300;">O maior e mais completo ecossistema de educação em tecnologia do Brasil</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Por que a FIAP é Referência?</h2>
+        <div class="cards">
+            <div class="card">
+                <span class="card-icon">🚀</span>
+                <h3>Inovação Constante</h3>
+                <p>A FIAP está sempre na vanguarda da tecnologia, oferecendo cursos nas áreas mais demandadas do mercado: Desenvolvimento, Data Science, Cybersecurity e muito mais.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💼</span>
+                <h3>Conexão com o Mercado</h3>
+                <p>Parcerias com as maiores empresas de tecnologia do mundo garantem que você aprenda o que realmente importa para sua carreira profissional.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌍</span>
+                <h3>Visão Global</h3>
+                <p>Extensões internacionais com Babson College e Nova School of Business & Economics ampliam seus horizontes e networking global.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎯</span>
+                <h3>Metodologia Hands-On</h3>
+                <p>Aprenda fazendo! Projetos práticos, desafios reais e experiências que preparam você para o mercado de trabalho desde o primeiro dia.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🏆</span>
+                <h3>Reconhecimento</h3>
+                <p>Instituição premiada e reconhecida nacionalmente e internacionalmente pela excelência em educação tecnológica e inovação.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💡</span>
+                <h3>Ecossistema Completo</h3>
+                <p>Graduação, Pós-Graduação, MBA, Cursos de Extensão e muito mais. Tudo integrado para sua jornada de aprendizado contínuo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <h2 style="text-align: center; margin-bottom: 60px; font-size: 3rem; font-weight: 800; color: white; position: relative; z-index: 1;">FIAP em Números</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-target="35">0</span>
+                <span class="stat-label">Anos de História</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="16">0</span>
+                <span class="stat-label">Graduações Oferecidas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">Cursos Disponíveis</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="50000">0</span>
+                <span class="stat-label">Alunos Formados</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Áreas de Conhecimento</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon">💻</div>
+                <div class="timeline-content">
+                    <h4>Desenvolvimento & Programação</h4>
+                    <p>Domine as linguagens e frameworks mais utilizados no mercado. Aprenda a criar aplicações web, mobile e sistemas complexos com as melhores práticas.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">📊</div>
+                <div class="timeline-content">
+                    <h4>Data Science & Analytics</h4>
+                    <p>Transforme dados em insights valiosos. Aprenda Machine Learning, Big Data, IA e análise avançada de dados para tomar decisões estratégicas.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">🔒</div>
+                <div class="timeline-content">
+                    <h4>Cybersecurity</h4>
+                    <p>Proteja sistemas e informações críticas. Torne-se um especialista em segurança da informação, ethical hacking e proteção de dados.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">🎨</div>
+                <div class="timeline-content">
+                    <h4>Design & UX</h4>
+                    <p>Crie experiências digitais incríveis. Aprenda design thinking, prototipagem e como desenvolver interfaces que encantam usuários.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">🚀</div>
+                <div class="timeline-content">
+                    <h4>Inovação & Negócios</h4>
+                    <p>Desenvolva sua startup ou inove em empresas estabelecidas. Aprenda empreendedorismo, gestão de projetos e transformação digital.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 style="font-size: 3rem; margin-bottom: 25px; color: #ffffff; font-weight: 800;">Pronto para Transformar seu Futuro?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 50px; color: #b0b0b0; font-weight: 300;">Junte-se a milhares de alunos que já escolheram a FIAP para construir carreiras de sucesso em tecnologia.</p>
+            <a href="https://www.fiap.com.br" target="_blank" class="cta-button">Conheça Mais</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-size: 1rem; margin-bottom: 10px;">&copy; 2025 FIAP - Faculdade de Informática e Administração Paulista</p>
+        <p style="margin-top: 15px; font-size: 0.95rem;">
+            <a href="https://www.fiap.com.br" target="_blank">www.fiap.com.br</a> | 
+            Alunos MINFIN - Bem-vindos ao Ecossistema FIAP
+        </p>
+    </footer>
+
+    <script>
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString('pt-BR');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString('pt-BR');
+                }
+            }, 16);
+        }
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stat-number')) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    } else if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(135deg, #f8f9fa 0%, #fff 100%)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'white';
+            });
+        });
+
+        console.log('%c🎓 Bem-vindos à FIAP! 🚀', 'font-size: 24px; color: #FF0080; font-weight: bold;');
+        console.log('%cAlunos MINFIN - O Novo é Aqui!', 'font-size: 16px; color: #7928CA;');
+    </script>
+</body>
+</html>
